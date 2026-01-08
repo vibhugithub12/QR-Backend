@@ -41,7 +41,7 @@ app.get('/qr/:id', (req, res) => {
     return res.status(410).json({ error: 'QR code expired' })
   }
 
-  qr.used = true
+  // Delete QR after first use (one-time use)
   deleteQR(qr.id)
 
   res.json({ message: qr.message })
